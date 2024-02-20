@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import { useState, useEffect } from "react";
 import Tricks from "../Tricks/Tricks";
+import Form from "../Form/Form";
 
 
 function App() {
@@ -31,7 +32,8 @@ function App() {
       <h1>Sick Trick Wish List</h1>
       {!tricks.length && <h2>There are no tricks yet -- add some!</h2>}
       <Tricks tricks={tricks}/>
-      
+      <Form addTrick={addTrick}/>
+  
     </div>
   );
 }

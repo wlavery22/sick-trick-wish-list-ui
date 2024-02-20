@@ -1,12 +1,34 @@
 import './Form.css'
 import { useState } from 'react' 
 
-function Form(){
+function Form({addTrick}){
   const [stance, setStance]  = useState("")
   const [name, setName] = useState("");
   const [obstacle, setObstacle] = useState("");
   const [tutorial, setTutorial] = useState("");
  
+  function submitTrick(event) {
+    event.preventDefault()
+  
+    const newTrick = {
+      id: Date.now(), 
+      name: name,
+      stance: stance,
+      obstacle: obstacle,
+      tutorial: tutorial,
+      key: Date.now()
+    };
+
+    addTrick(newTrick)
+      clearInput() 
+  }
+
+  function clearInput() {
+    setStance("")
+    setName("")
+    setObstacle("")
+    setTutorial("")
+  }
 
   return (
     <form> 
@@ -48,19 +70,10 @@ function Form(){
         value={tutorial}
         onChange={event => setTutorial(event.target.value)}
       />
-
-        <button>SEND IT</button>
+      
+        <button className="submitTrick" onClick = {event => submitTrick(event)}>SEND IT</button>
     </form> 
   )
 }
 
 export default Form; 
-
-{/* //submit buttons will change later */}
-
-{/* event listener, when triggered by user typing something into the input field, setTitle function is called with a new value of input as the argument, it updates the state of the title variable. 
-
-type='text' This can be password, radio, checkbox or Number
-placeholder='Title' will say Title in the input 
-name='title', need this when handling multiple inputs 
-value={title} useful for form validation </form>  */}
