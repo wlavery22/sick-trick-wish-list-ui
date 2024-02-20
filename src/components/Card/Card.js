@@ -1,11 +1,17 @@
 import './Card.css'
 
-const Card = () => {
+const Card = ({ stance, name, obstacle, tutorial, id }) => {
+
   return (
     <div className='card'>
-      <h3>Card!</h3>
+      <p>{name}</p>
+      <p>{stance}</p>
+      <p>Obstacle: {obstacle}</p>
+      <p>Link to Tutorial: {tutorial}</p>
     </div>
   )
 }
 
 export default Card
+
+
